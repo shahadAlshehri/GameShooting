@@ -1,0 +1,31 @@
+canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(31, 58, 16, 0.973);
+  box-shadow: rgb(32, 26, 11) 20px 10px 50px;
+  border-radius: 5px;
+  
+}
+
+.popUp-overlay{
+  position:fixed;
+  background-color: rgba(0, 0, 1, 0.322);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.popUp-Box{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  border: 10px solid #ccc;
+  padding: 50px;
+  z-index: 1001;
+  font-size: 40px;
+}
