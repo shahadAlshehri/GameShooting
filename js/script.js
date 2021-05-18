@@ -93,7 +93,6 @@ function handleGunshotsSoldier() {
     gunshots_soldier[i].GunshotMovement()
     gunshots_soldier[i].DrawGunshot();
 
-    // Check collision with falling bombs
     for (let j = 0; j < bombs.length; j++) {
       if ( bombs[j] &&  gunshots_soldier[i] && CheckCollision(gunshots_soldier[i], bombs[j]) )
        {
@@ -103,7 +102,6 @@ function handleGunshotsSoldier() {
       }
     }
 
-    // Check collision with WarplaneCas
     if (WarplaneCase  && gunshots_soldier[i] 
       && CheckCollision(warplane, gunshots_soldier[i])) {
       if (score < 70) score += 1
@@ -111,7 +109,6 @@ function handleGunshotsSoldier() {
       i--
     }
 
-    // Check collision with canvas walls
     if (gunshots_soldier[i] && gunshots_soldier[i].y < 30) {
       gunshots_soldier.splice(i, 1)
       i--
@@ -159,8 +156,8 @@ function handleBlockProtection() {
   })();
 
 class Bombs {
-  constructor(horizontalPosition) {
-    this.x = horizontalPosition
+  constructor(x) {
+    this.x = x
     this.y = 20
     this.width = 70
     this.height = 70
@@ -234,8 +231,9 @@ class Warplane {
 
       if (currentFrame % 50 === 0) {
         WarplaneBombs.push( new WarplaneBomb(this.x + 40, this.y + 40, 'up'))
-        WarplaneBombs.push(new WarplaneBomb(this.x + 40, this.y + 40, 'left'))
         WarplaneBombs.push( new WarplaneBomb(this.x + 40, this.y + 40, 'right'))
+        WarplaneBombs.push(new WarplaneBomb(this.x + 40, this.y + 40, 'left'))
+       
       }
     }
   }
@@ -243,7 +241,7 @@ class Warplane {
 
 let warplane = new Warplane(450)
 
-function handleWarplane() {
+function WarplaneAction() {
   if (WarplaneCase) {
     warplane.DrawWarplane()
     warplane.WarplaneMovment()    
@@ -260,6 +258,7 @@ class WarplaneBomb {
     this.speed = 6
     this.direction = dir
   } 
+  
   DrawBomb() {
 
     let imgebomb2=new Image();
