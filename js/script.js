@@ -51,7 +51,7 @@ class PlayerSoldier {
 // Default player starting location
 let player = new PlayerSoldier()
 
-function Player() {
+function PlayerAction() {
   player.CharacterMovements()
   player.DrawCharacter()
 
@@ -88,7 +88,7 @@ DrawGunshot() {
   } 
 }
 
-function handleGunshotsSoldier() {
+function GunshotsSoldierAction() {
   for (let i = 0; i < gunshots_soldier.length; i++) {
     gunshots_soldier[i].GunshotMovement()
     gunshots_soldier[i].DrawGunshot();
@@ -130,7 +130,7 @@ class BlockProtection {
   }
 }
 
-function handleBlockProtection() {
+function BlockProtectionAction() {
   for (let i = 0; i < block_protections.length; i++) {
     block_protections[i].DrawBlock()
 
@@ -173,10 +173,9 @@ class Bombs {
   BombsMovement() {
     this.y += this.movement
   }
- 
 }
 
-function handleBombs() {
+function BombsAction() {
   for (let i = 0; i < bombs.length; i++) {
     bombs[i].DrawBombs()
      bombs[i].BombsMovement()
@@ -260,7 +259,6 @@ class WarplaneBomb {
   } 
   
   DrawBomb() {
-
     let imgebomb2=new Image();
     imgebomb2.src="Bomb.png";
     context.beginPath()
@@ -282,7 +280,7 @@ class WarplaneBomb {
   }
  }
 
-function handleWarplaneBomb() {
+function WarplaneBombAction() {
   for (let i = 0; i < WarplaneBombs.length; i++) {
     WarplaneBombs[i]. BombMovement()
     WarplaneBombs[i].DrawBomb() 
@@ -348,14 +346,14 @@ function Game() {
 
 (function DrawGame() {
   clearScreen();
-  Player();
-  handleGunshotsSoldier()
-  handleBombs()
+  PlayerAction();
+  GunshotsSoldierAction();
+  BombsAction();
   Game();
   drawScore();
-  handleBlockProtection()
-  handleWarplane()
-  handleWarplaneBomb()
+  BlockProtectionAction();
+  WarplaneAction();
+  WarplaneBombAction();
   currentFrame++
   requestAnimationFrame(DrawGame)
 })();
